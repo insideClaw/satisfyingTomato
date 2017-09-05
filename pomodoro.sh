@@ -9,19 +9,37 @@ gallery="./asci_art/"
 if [ $# == 0 ]
 then
   limit=25
-  else
-    limit=$1
+else
+  limit=$1
 fi
+restTimer=5
 
-# Count and report every minute.
-while [ $limit -gt 0 ]
+while true
 do
-	echo "Minutes remaining $limit"
-	limit=$(( $limit - 1 ))
-	rewardRNG "$gallery" "8"
-	sleep 60
-done
 
-# Once time has passed, notify.
-echo "Time's up!"
-osascript -e 'display notification "Now is pomodoro time!" with title "Your friendly tomato overlord"'
+	# Count and report every minute.
+	while [ $limit -gt 0 ]
+	do
+		echo "Minutes remaining $limit"
+		limit=$(( $limit - 1 ))
+		rewardRNG "$gallery" "8"
+		sleep 60
+	done
+
+	# Once time has passed, notify.
+	osascript -e 'display notification "You dont have to walk, but do rest" with title "Your friendly tomato overlord"'
+	echo "Time's up!"
+
+	# Count minutes, resty style
+	while [ $restTimer -gt 0 ]
+	do
+		echo "\~.~/ \~.~/ \~.~/"
+		restTimer=$(( $limit - 1 ))
+		sleep 60
+	done
+
+	# Once back to work time, notify
+	osascript -e 'display notification "Back" with title "Your friendly tomato overlord"'
+	echo "Back. Press any key to restart timer."
+	read;
+done
