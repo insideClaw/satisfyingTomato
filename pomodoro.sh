@@ -5,6 +5,8 @@
 source ./get_random_file_from_folder.sh 
 gallery="./asci_art/"
 
+
+function resetTimer {
 # If there is no input parameters, assume normal Pomodoro time.
 if [ $# == 0 ]
 then
@@ -13,9 +15,11 @@ else
   limit=$1
 fi
 restTimer=5
+}
 
 while true
 do
+	resetTimer;
 
 	# Count and report every minute.
 	while [ $limit -gt 0 ]
@@ -34,7 +38,7 @@ do
 	while [ $restTimer -gt 0 ]
 	do
 		echo "\~.~/ \~.~/ \~.~/"
-		restTimer=$(( $limit - 1 ))
+		restTimer=$(( $restTimer - 1 ))
 		sleep 60
 	done
 
