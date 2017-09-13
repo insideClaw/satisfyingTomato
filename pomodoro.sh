@@ -26,7 +26,8 @@ do
 	do
 		echo "Minutes remaining $limit"
 		limit=$(( $limit - 1 ))
-		rewardRNG "$gallery" "8"
+		# Second parameter is the gauntlet difficulty
+		rewardRNG "$gallery" "6"
 		sleep 60
 	done
 
