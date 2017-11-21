@@ -4,7 +4,7 @@
 # Pull the library that gives ASCI art, provided a 1. Folder 2. Chance of trigger
 source ./get_random_file_from_folder.sh 
 gallery="./asci_art/"
-
+rcheck_file="./reality_check"
 
 function resetTimer {
 # If there is no input parameters, assume normal Pomodoro time.
@@ -26,10 +26,13 @@ do
 	do
 		echo "Minutes remaining $limit"
 		limit=$(( $limit - 1 ))
-		# Second parameter is the gauntlet difficulty
+		# Maybe outputs the reward; the second parameter is the gauntlet difficulty
 		rewardRNG "$gallery" "6"
+		# Every tick, also check if a reality check happens, given the gauntlet
+		rcheckRNG "$rcheck_file" "6"
 		sleep 60
 	done
+
 
 	# Once time has passed, notify.
 	osascript -e 'display notification "You dont have to walk, but do rest" with title "Your friendly tomato overlord"'
