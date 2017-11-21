@@ -40,3 +40,13 @@ function rewardRNG {
 		randomReward;
 	fi
 }
+
+function rcheckRNG {
+	# Rolls a die and prints the passed RC file if successful
+	rc_location="$1"
+	gauntlet=5
+	rollDie;
+	if $rollSuccess; then
+		cat $rc_location
+	fi
+}
