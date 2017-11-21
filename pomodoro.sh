@@ -28,8 +28,10 @@ do
 		limit=$(( $limit - 1 ))
 		# Maybe outputs the reward; the second parameter is the gauntlet difficulty
 		rewardRNG "$gallery" "6"
-		# Every tick, also check if a reality check happens, given the gauntlet
-		rcheckRNG "$rcheck_file" "6"
+		if $rollSuccess; then
+			# Every time there's an award, also check if a reality check happens, with a separate gauntlet
+			rcheckRNG "$rcheck_file" "6"
+		fi
 		sleep 60
 	done
 
