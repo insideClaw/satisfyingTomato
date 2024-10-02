@@ -36,9 +36,10 @@ do
 	done
 
 
-	# Once time has passed, notify.
-	osascript -e 'display notification "You dont have to walk, but do rest" with title "Your friendly tomato overlord"'
-	echo "Time's up!"
+	# Once time has passed, notify to start break
+	osascript -e 'display notification "Break" with title "Your friendly tomato overlord"'
+	echo "Time's up! Walking away?"
+	read;
 
 	# Count minutes, resty style
 	while [ $restTimer -gt 0 ]
